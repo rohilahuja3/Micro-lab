@@ -15,12 +15,9 @@ start:
     mov al,num1 ;loading num1 in ah register because it is a 8 bit number
     mov bl,num2 ;loading num2 in ah register because it is a 8 bit number
     mov ah,00h  ;setting al to 0 because we want to add the two numbers
-    add al,bl   ;adding num1 and num2 and storing the result in ah register
+    sub al,bl   ;subtracting num1 and num2 and storing the result in ah register
     mov num3,al ;transferring the result from ah register to num3
     hlt
 
 code ends
 end start
-
-
-; to print from data segment use d<addr of ds>:0000  <till ending addr>

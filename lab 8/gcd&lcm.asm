@@ -1,0 +1,32 @@
+DATA SEGMENT
+NUM1 DW 09H
+NUM2 DW 03H
+DATA ENDS
+
+ASSUME DS:DATA, CS:CODE
+CODE SEGMENT
+START:
+        MOV AX,DATA
+        MOV DS,AX
+        MOV AX,NUM1
+        MOV BX,NUM2
+        
+COMPARE: CMP AX,BX
+         JE ANS
+         JB SWAP
+DIVISION: MOV DX,0000H
+          DIV BX
+          CMP DX,0000H
+          JE ANS
+          MOV AX,DX
+          JMP COMPARE
+SWAP: XCHG AX,BX
+      JMP DIVISION
+ANS: MOV CX,BX
+     MOV AX,NUM1
+     MOV BX,NUM2
+     MUL BX
+     DIV CX
+     HLT
+CODE ENDS
+END START

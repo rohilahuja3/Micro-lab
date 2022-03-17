@@ -1,11 +1,16 @@
-assume cs:code
+assume cs:code,ds:DATA
+
+data segment
+mg1 db 'b$'
+data ends
 
 code segment
 start:
-    mov ah,04h
-    mov bh,03h
-    mul bh
-    hlt
+    mov ax,data
+    mov ds,ax
+    print mg1
+    ; mov dl,'b'
+    int 21h
 
 code ends
 end start

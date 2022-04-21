@@ -20,10 +20,10 @@ start:
         mov al,[SI]  ;this loads the first element 99h in the al register 
         mov bl,[SI+1];this hold the 2nd element 12h in bl register
         cmp al,bl   ;this compares al and bl register i.e al - bl if al=99h and bl=12 therefore 99h-12h i.e no carry 
-                    ;therefore jc command only works when carry exitts and then it will jump to line number 25 and swap will happen
+                    ;therefore jc command only works when carry exists and then it will jump to line number 26 and swap will happen 
                     ;for example when al=12h and bl=99h then al-bl will have carry because then al is the smaller number and 
                     ;jc down command will execute and 
-        jc down
+        jc down     ;this is jump on carry commmand and executes when al has smaller number than bl
         mov dl,[SI+1]
         xchg [SI],dl
         mov [SI+1],dl
@@ -31,9 +31,9 @@ start:
     down:
         inc SI
         dec cl
-        jnz up1
+        jnz up1     ;jump until cl is zero
         dec ch
-        jnz up2
+        jnz up2     ;jump until ch is zero
 
     hlt
 

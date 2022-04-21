@@ -1,26 +1,32 @@
-ASSUME CS:CODE, DS:DATA
+Assume cs:code,ds:DATA
 
-DATA SEGMENT
-    ARRAY DB 99H, 12H, 56H, 45H, 36H
-    COUNT EQU 05H
-DATA ENDS
+data segment
+; array DB 6ah, 3ah, 8bh, 5ch, 9eh
+;106, 58, 139, 92, 158
+array DB 99h, 12h, 56h, 45h, 36h
+data ends
 
-CODE SEGMENT
-    START:
-    MOV AX,DATA
-    MOV DS,AX
-    MOV CX,COUNT-1
-    MOV SI,OFFSET ARRAY
-    XOR AX,AX
-    MOV AL,[SI]
+code segment
+start:
+    mov ax,data
+    mov ds,ax
+
+    mov cl,04h
+    lea SI,array
     
-    LOOP1:
-    ADD SI,01H
-    CMP [SI],AL
-    JC LOOP2
-    MOV AL,[SI]
+    xor ax,ax  ; just to clear the ax register
+    mov al,[SI]
+    
+    loop1:
+        ; for largest number
+        add SI,01h
+        cmp al,[SI]
+        jnc loop2
+        mov al,[SI]
 
-    LOOP2: LOOP LOOP1
-    HLT
-CODE ENDS
-END START
+    loop2:
+        loop loop1
+
+hlt 
+code ends
+end start

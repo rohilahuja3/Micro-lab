@@ -9,7 +9,7 @@ start:
 LOOP1:
     mul cx ;ax=ax*cx 
     inc bx
-    loop LOOP1 ;loop function has an auto dec
+    loop LOOP1 ;loop function has an auto dec cx
     hlt
 
 code ends

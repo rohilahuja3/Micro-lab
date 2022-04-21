@@ -3,7 +3,7 @@ assume cs:code
 code segment
 start:
     mov cx,0000h
-    mov bx,0004h
+    mov bx,0064h
     
     loop1:  mov ax,cx
             mul cx

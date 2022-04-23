@@ -1,16 +1,21 @@
-assume cs:code
+assume cs:code,ds:data
+
+data segment
+fac_num DW 0005h
+data ends
+
 code segment
-
 start:
-    mov cx, 0005h
-    mov ax, 0001h
-    mov bx, 0001h
+    mov ax,data
+    mov ds,ax
 
-LOOP1:
-    mul cx ;ax=ax*cx 
-    inc bx
-    loop LOOP1 ;loop function has an auto dec cx
-    hlt
+    mov ax,0001h
+    mov cx,fac_num
 
+    loop1:
+        mul cx ; ax = ax * cx
+        loop loop1
+    
+hlt
 code ends
 end start

@@ -9,7 +9,7 @@ start:
     mov ax,data
     mov ds,ax
 
-    mov ch,04h  ;this cl is the outer for loop to travese through the array 
+    mov ch,04h  ;this ch is the outer for loop to travese through the array 
                 ;first 99h and then when all 4 comparisions is done move to 12h
 
     up2:
@@ -20,7 +20,7 @@ start:
         mov al,[SI]  ;this loads the first element 99h in the al register 
         mov bl,[SI+1];this hold the 2nd element 12h in bl register
         cmp al,bl   ;this compares al and bl register i.e al - bl if al=99h and bl=12 therefore 99h-12h i.e no carry 
-                    ;therefore jc command only works when carry exists and then it will jump to line number 26 and swap will happen 
+                    ;therefore jc command only works when carry exists and then it will jump to line number 27 and swap will happen 
                     ;for example when al=12h and bl=99h then al-bl will have carry because then al is the smaller number and 
                     ;jc down command will execute and 
         jc down     ;this is jump on carry commmand and executes when al has smaller number than bl

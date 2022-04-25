@@ -24,7 +24,7 @@ start:
     cld; clear direction flag
 
     rep cmpsb ;compare two strings till cx=0 or zf != 1
-    jne next; Jump to NEXT if no zf ie zf=0
+    jne next; Jump to NEXT if no zf ie zf!=0
     lea dx, d; load ea of strign d in dx
     jmp display
 
